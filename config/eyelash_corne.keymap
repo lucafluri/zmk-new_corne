@@ -88,10 +88,10 @@
         lower_layer {
             display-name = "NUMBER";
             bindings = <
-&trans    &kp N1            &kp N2    &kp N3    &kp N4           &kp N5                                         &mmv MOVE_UP                     &kp N6        &kp N7        &kp N8        &kp N9        &kp N0    &kp BSPC
-&none     &kp SINGLE_QUOTE  &kp SEMI  &kp LBKT  &kp KP_PLUS      &kp KP_SUBTRACT                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp KP_EQUAL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp HOME  &kp PG_UP
-&kp CAPS  &none             &none     &trans    &kp KP_MULTIPLY  &kp KP_SLASH     &kp C_MUTE                    &mmv MOVE_DOWN                   &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp END   &kp PG_DN
-                                      &trans    &trans           &trans                                                                          &trans        &trans        &kp DELETE
+&trans    &kp N1            &kp N2    &kp N3    &kp N4           &kp N5                                         &mmv MOVE_UP                     &kp N6            &kp N7        &kp N8        &kp N9        &kp N0    &kp BSPC
+&none     &kp SINGLE_QUOTE  &kp SEMI  &kp LBKT  &kp KP_PLUS      &kp KP_SUBTRACT                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LS(NUMBER_0)  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp HOME  &kp PG_UP
+&kp CAPS  &none             &none     &trans    &kp KP_MULTIPLY  &kp KP_SLASH     &kp C_MUTE                    &mmv MOVE_DOWN                   &kp NUMBER_0      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp END   &kp PG_DN
+                                      &trans    &trans           &trans                                                                          &trans            &trans        &kp DELETE
             >;
 
             sensor-bindings = <&scroll_encoder>;
