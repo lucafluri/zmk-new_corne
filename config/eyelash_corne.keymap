@@ -52,7 +52,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "QWERTY";
+            display-name = "QWERTZ";
             bindings = <
 &none  &kp Q  &kp W           &kp E               &kp R             &kp T                                      &kp UP                &kp Y        &kp U             &kp I               &kp O           &kp P      &kp BSPC
 &none  &kp A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &mt LEFT_SHIFT J  &mt LEFT_CONTROL K  &mt LEFT_ALT L  &none      &none
@@ -100,6 +100,7 @@
         };
 
         layer_4 {
+            display-name = "Fn2";
             bindings = <
 &trans          &trans           &trans          &trans        &trans        &trans                             &trans          &kp LA(LEFT_ARROW)  &trans           &trans           &trans           &trans     &trans
 &bt BT_CLR_ALL  &bt BT_CLR       &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3               &trans  &trans  &trans  &kp ENTER           &kp LEFT_ARROW   &kp DOWN_ARROW   &kp UP_ARROW     &kp RIGHT  &trans
