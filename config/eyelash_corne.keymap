@@ -33,16 +33,16 @@
         //     bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         // };
 
-        // hml: balanced_homerow_mods {
-        //     flavor = "balanced";
-        //     tapping-term-ms = <280>;
-        //     quick-tap-ms = <175>;
-        //     require-prior-idle-ms = <150>;
-        //     bindings = <&kp>, <&kp>;
+        hml: balanced_homerow_mods {
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
 
-        //     // hold-trigger-key-positions = <KEYS_R THUMBS>;
-        //     // hold-trigger-on-release;
-        // };
+            // hold-trigger-key-positions = <KEYS_R THUMBS>;
+            // hold-trigger-on-release;
+        };
     };
 
     rgb_encoder: rgb_encoder {
@@ -93,7 +93,7 @@
 &trans    &kp N1            &kp N2    &kp N3    &kp N4           &kp N5                                         &mmv MOVE_UP                     &kp N6        &kp N7        &kp N8        &kp N9        &kp N0    &kp BSPC
 &none     &kp SINGLE_QUOTE  &kp SEMI  &kp LBKT  &kp KP_PLUS      &kp KP_SUBTRACT                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp KP_EQUAL  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp HOME  &kp PG_UP
 &kp CAPS  &none             &none     &trans    &kp KP_MULTIPLY  &kp KP_SLASH     &kp C_MUTE                    &mmv MOVE_DOWN                   &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp END   &kp PG_DN
-                                      &trans    &trans           &trans                                                                          &trans        &trans        &trans
+                                      &trans    &trans           &trans                                                                          &trans        &trans        &kp DELETE
             >;
 
             sensor-bindings = <&scroll_encoder>;
