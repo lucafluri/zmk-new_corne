@@ -32,6 +32,15 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+        hml: positional_hold_tap {
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            // hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-on-release;
+        };
     };
 
     rgb_encoder: rgb_encoder {
@@ -47,17 +56,6 @@
 
         tap-ms = <30>;
     };
-
-    /* Left-hand HRMs. */
-    ZMK_HOLD_TAP(hml,
-        flavor = "balanced";
-        tapping-term-ms = <280>;
-        quick-tap-ms = <175>;
-        require-prior-idle-ms = <150>;
-        bindings = <&kp>, <&kp>;
-        // hold-trigger-key-positions = <KEYS_R THUMBS>;
-        hold-trigger-on-release;
-    )
 
     keymap {
         compatible = "zmk,keymap";
