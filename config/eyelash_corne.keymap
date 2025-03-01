@@ -32,40 +32,66 @@
         //     #binding-cells = <0>;
         //     bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         // };
-        // Homerow mods with balanced flavor and specific parameters for key repetition
-        hml: hml {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;             // Allows for quick repeat taps
-            require-prior-idle-ms = <150>;    // Helps with avoiding accidental activations
-            flavor = "balanced";              // Good balance between modifiers and typing
-            // No hold-trigger-on-release to allow key repeat when held
-            // No global-quick-tap to avoid interference with normal typing
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>; // All keys except home row
+        // hml: balanced_homerow_mods {
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>;
+        //     require-prior-idle-ms = <150>;
+        //     bindings = <&kp>, <&kp>;
+        //     // hold-trigger-key-positions = <KEYS_R THUMBS>;
+        //     // hold-trigger-on-release;
+        // };
+    };
+
+    rgb_encoder: rgb_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
+    };
+
+    scroll_encoder: scroll_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
+        tap-ms = <30>;
+    };
+
+    hml: hml {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HML";
+        bindings = <&kp>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <280>;
+        quick-tap-ms = <175>;
+        require-prior-idle-ms = <150>;
+        flavor = "balanced";
+        hold-trigger-on-release;
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <2 3>;
         };
 
-        // Define a key repeat behavior that we won't use directly but is required
-        key_repeat: key_repeat {
-            compatible = "zmk,behavior-key-repeat";
-            #binding-cells = <0>;
+        copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <30 31>;
         };
 
-        rgb_encoder: rgb_encoder {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
+        paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <31 32>;
         };
 
-        scroll_encoder: scroll_encoder {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-            tap-ms = <30>;
+        cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <32 30>;
         };
-
     };
 
     keymap {
@@ -74,9 +100,9 @@
         default_layer {
             display-name = "QWERTZ";
             bindings = <
-                &none  &kp Q  &kp W            &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
-                &none  &kp A  &hml LEFT_ALT S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F  &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
-                &none  &kp Z  &kp X            &kp C                &kp V              &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
+&none  &kp Q  &kp W            &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
+&none  &kp A  &hml LEFT_ALT S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F  &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
+&none  &kp Z  &kp X            &kp C                &kp V              &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
                                &mt LGUI ESCAPE      &lt 3 TAB          &lt 1 SPACE                                                      &lt 2 ENTER  &lt 4 TAB          &kp BACKSPACE
             >;
 
@@ -86,9 +112,9 @@
         lower_layer {
             display-name = "NUMBER";
             bindings = <
-                &trans    &kp N1            &kp N2    &kp N3    &kp N4           &kp N5                                         &mmv MOVE_UP                     &kp N6            &kp N7        &kp N8        &kp N9        &kp N0    &kp BSPC
-                &none     &kp SINGLE_QUOTE  &kp SEMI  &kp LBKT  &kp KP_PLUS      &kp KP_SUBTRACT                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LS(NUMBER_0)  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp HOME  &kp PG_UP
-                &kp CAPS  &none             &none     &trans    &kp KP_MULTIPLY  &kp KP_SLASH     &kp C_MUTE                    &mmv MOVE_DOWN                   &kp NUMBER_0      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp END   &kp PG_DN
+&trans    &kp N1            &kp N2    &kp N3    &kp N4           &kp N5                                         &mmv MOVE_UP                     &kp N6            &kp N7        &kp N8        &kp N9        &kp N0    &kp BSPC
+&none     &kp SINGLE_QUOTE  &kp SEMI  &kp LBKT  &kp KP_PLUS      &kp KP_SUBTRACT                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LS(NUMBER_0)  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp HOME  &kp PG_UP
+&kp CAPS  &none             &none     &trans    &kp KP_MULTIPLY  &kp KP_SLASH     &kp C_MUTE                    &mmv MOVE_DOWN                   &kp NUMBER_0      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp END   &kp PG_DN
                                       &trans    &trans           &trans                                                                          &trans            &trans        &kp DELETE
             >;
 
@@ -98,9 +124,9 @@
         raise_layer {
             display-name = "SYMBOL";
             bindings = <
-                &trans  &kp LS(RIGHT_BRACKET)  &kp RA(NUMBER_2)  &kp RA(NUMBER_3)  &kp RA(N7)       &kp LS(N5)                                     &mmv MOVE_UP                     &kp LS(NUMBER_6)  &kp LS(N8)            &kp LS(N9)             &kp MINUS         &kp EQUAL      &none
-                &trans  &kp LS(MINUS)          &none             &none             &kp LS(N7)       &kp RA(NON_US_BSLH)            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &none             &kp RA(LEFT_BRACKET)  &kp RA(RIGHT_BRACKET)  &kp LS(NUMBER_2)  &kp RA(EQUAL)  &none
-                &trans  &out OUT_USB           &out OUT_BLE      &none             &kp NON_US_BSLH  &kp LS(NON_US_BSLH)  &trans                    &mmv MOVE_DOWN                   &none             &kp RA(SINGLE_QUOTE)  &kp RA(BSLH)           &kp LS(EQUAL)     &kp BSLH       &none
+&trans  &kp LS(RIGHT_BRACKET)  &kp RA(NUMBER_2)  &kp RA(NUMBER_3)  &kp RA(N7)       &kp LS(N5)                                     &mmv MOVE_UP                     &kp LS(NUMBER_6)  &kp LS(N8)            &kp LS(N9)             &kp MINUS         &kp EQUAL      &none
+&trans  &kp LS(MINUS)          &none             &none             &kp LS(N7)       &kp RA(NON_US_BSLH)            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &none             &kp RA(LEFT_BRACKET)  &kp RA(RIGHT_BRACKET)  &kp LS(NUMBER_2)  &kp RA(EQUAL)  &none
+&trans  &out OUT_USB           &out OUT_BLE      &none             &kp NON_US_BSLH  &kp LS(NON_US_BSLH)  &trans                    &mmv MOVE_DOWN                   &none             &kp RA(SINGLE_QUOTE)  &kp RA(BSLH)           &kp LS(EQUAL)     &kp BSLH       &none
                                                  &trans            &trans           &kp SPACE                                                                       &kp RET           &trans                &trans
             >;
 
@@ -110,9 +136,9 @@
         layer_3 {
             display-name = "Fn";
             bindings = <
-                &studio_unlock  &kp F1      &kp F2        &kp F3        &kp F4        &kp F5                                      &mmv MOVE_UP                     &kp F6       &kp F7      &kp F8        &kp F9           &kp F10         &kp F11
-                &bt BT_CLR_ALL  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &bootloader  &kp C_PREV  &kp C_VOL_DN  &kp C_VOLUME_UP  &kp C_NEXT      &kp F12
-                &trans          &sys_reset  &trans        &bootloader   &trans        &none         &kp C_MUTE                    &mmv MOVE_DOWN                   &trans       &trans      &bootloader   &sys_reset       &kp SCROLLLOCK  &none
+&studio_unlock  &kp F1      &kp F2        &kp F3        &kp F4        &kp F5                                      &mmv MOVE_UP                     &kp F6       &kp F7      &kp F8        &kp F9           &kp F10         &kp F11
+&bt BT_CLR_ALL  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &bootloader  &kp C_PREV  &kp C_VOL_DN  &kp C_VOLUME_UP  &kp C_NEXT      &kp F12
+&trans          &sys_reset  &trans        &bootloader   &trans        &none         &kp C_MUTE                    &mmv MOVE_DOWN                   &trans       &trans      &bootloader   &sys_reset       &kp SCROLLLOCK  &none
                                           &trans        &trans        &trans                                                                       &trans       &trans      &trans
             >;
 
@@ -122,11 +148,23 @@
         layer_4 {
             display-name = "Fn2";
             bindings = <
-                &trans  &trans           &trans          &trans  &trans  &trans                             &trans          &kp LA(LEFT_ARROW)  &trans           &trans           &trans           &trans     &trans
-                &none   &none            &trans          &trans  &trans  &none                      &trans  &trans  &trans  &kp ENTER           &kp LEFT_ARROW   &kp DOWN_ARROW   &kp UP_ARROW     &kp RIGHT  &trans
-                &trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans  &trans  &rgb_ug RGB_EFF  &trans            &trans          &rgb_ug RGB_SPI     &rgb_ug RGB_SPD  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &trans     &trans
+&trans  &trans           &trans          &trans  &trans  &trans                             &trans          &kp LA(LEFT_ARROW)  &trans           &trans           &trans           &trans     &trans
+&none   &none            &trans          &trans  &trans  &none                      &trans  &trans  &trans  &kp ENTER           &kp LEFT_ARROW   &kp DOWN_ARROW   &kp UP_ARROW     &kp RIGHT  &trans
+&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans  &trans  &rgb_ug RGB_EFF  &trans            &trans          &rgb_ug RGB_SPI     &rgb_ug RGB_SPD  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &trans     &trans
                                          &trans  &trans  &trans                                             &trans              &trans           &trans
             >;
+        };
+
+        gaming {
+            display-name = "gaming";
+            bindings = <
+&none  &kp Q  &kp W        &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
+&none  &kp A  &kp S        &kp D                &kp F              &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
+&none  &kp Z  &hml LALT X  &hml LEFT_CONTROL C  &hml LEFT_SHIFT V  &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
+                           &mt LGUI ESCAPE      &lt 3 TAB          &lt 1 SPACE                                                      &lt 2 ENTER  &lt 4 TAB          &kp BACKSPACE
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
     };
 };
