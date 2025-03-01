@@ -70,6 +70,24 @@
         hold-trigger-on-release;
     };
 
+    leftbrackets_mm: leftbrackets_mm {
+        compatible = "zmk,behavior-mod-morph";
+        label = "LEFTBRACKETS_MM";
+        bindings = <&kp RA(LEFT_BRACKET)>, <&kp RA(APOS)>;
+
+        #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    rightbrackets_mm: rightbrackets_mm {
+        compatible = "zmk,behavior-mod-morph";
+        label = "RIGHTBRACKETS_MM";
+        bindings = <&kp RA(RIGHT_BRACKET)>, <&kp RA(BACKSLASH)>;
+
+        #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -92,6 +110,36 @@
             bindings = <&kp LC(X)>;
             key-positions = <32 30>;
         };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <8 9>;
+        };
+
+        del {
+            bindings = <&kp DEL>;
+            key-positions = <9 10>;
+        };
+
+        lpar {
+            bindings = <&kp RS(NUMBER_8)>;
+            key-positions = <23 24>;
+        };
+
+        rpar {
+            bindings = <&kp LS(N9)>;
+            key-positions = <24 25>;
+        };
+
+        lbracket {
+            bindings = <&leftbrackets_mm>;
+            key-positions = <38 37>;
+        };
+
+        rbracket {
+            bindings = <&rightbrackets_mm>;
+            key-positions = <39 38>;
+        };
     };
 
     keymap {
@@ -100,10 +148,10 @@
         default_layer {
             display-name = "QWERTZ";
             bindings = <
-&none  &kp Q  &kp W            &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
-&none  &kp A  &hml LEFT_ALT S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F  &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
-&none  &kp Z  &kp X            &kp C                &kp V              &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
-                               &mt LGUI ESCAPE      &lt 3 TAB          &lt 1 SPACE                                                      &lt 2 ENTER  &lt 4 TAB          &kp BACKSPACE
+&tog 5  &kp Q  &kp W            &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
+&none   &kp A  &hml LEFT_ALT S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F  &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
+&none   &kp Z  &kp X            &kp C                &kp V              &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
+                                &mt LGUI ESCAPE      &lt 3 TAB          &lt 1 SPACE                                                      &lt 2 ENTER  &lt 4 TAB          &kp BACKSPACE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
