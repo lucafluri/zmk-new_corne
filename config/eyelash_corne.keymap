@@ -158,10 +158,10 @@
         gaming {
             display-name = "gaming";
             bindings = <
-&none  &kp Q  &kp W        &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
-&none  &kp A  &kp S        &kp D                &kp F              &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
-&none  &kp Z  &hml LALT X  &hml LEFT_CONTROL C  &hml LEFT_SHIFT V  &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
-                           &mt LGUI ESCAPE      &lt 3 TAB          &lt 1 SPACE                                                      &lt 2 ENTER  &lt 4 TAB          &kp BACKSPACE
+&tog 5  &kp Q  &kp W        &kp E                &kp R              &kp T                                      &kp UP                &kp Y        &kp U              &kp I                &kp O            &kp P      &kp BSPC
+&none   &kp A  &kp S        &kp D                &kp F              &kp G                            &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hml LEFT_SHIFT J  &hml LEFT_CONTROL K  &hml LEFT_ALT L  &none      &none
+&none   &kp Z  &hml LALT X  &hml LEFT_CONTROL C  &hml LEFT_SHIFT V  &kp B        &kp C_PLAY_PAUSE              &kp DOWN              &kp N        &kp M              &kp COMMA            &kp DOT          &kp SLASH  &none
+                            &mt LGUI ESCAPE      &lt 3 TAB          &lt 1 SPACE                                                      &lt 2 ENTER  &lt 4 TAB          &kp BACKSPACE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
