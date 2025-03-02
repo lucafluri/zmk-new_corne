@@ -178,6 +178,11 @@
             bindings = <&kp KP_DIVIDE>;
             key-positions = <24 38>;
         };
+
+        sysLayer {
+            bindings = <&mo 6>;
+            key-positions = <44 45>;
+        };
     };
 
     keymap {
@@ -213,7 +218,7 @@
 &trans  &kp LS(RIGHT_BRACKET)  &kp RA(NUMBER_2)  &kp RA(NUMBER_3)  &kp RA(N7)       &kp LS(N5)                                     &mmv MOVE_UP                     &kp LS(NUMBER_6)  &none   &none   &kp MINUS         &kp EQUAL      &none
 &trans  &kp LS(MINUS)          &none             &none             &kp LS(N7)       &kp RA(NON_US_BSLH)            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &none             &none   &none   &kp LS(NUMBER_2)  &kp RA(EQUAL)  &none
 &trans  &out OUT_USB           &out OUT_BLE      &none             &kp NON_US_BSLH  &kp LS(NON_US_BSLH)  &trans                    &mmv MOVE_DOWN                   &none             &none   &none   &kp LS(EQUAL)     &kp BSLH       &none
-                                                 &trans            &trans           &kp SPACE                                                                       &none             &trans  &trans
+                                                 &trans            &trans           &trans                                                                          &none             &trans  &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -255,10 +260,10 @@
 
         sys {
             bindings = <
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR                     &trans          &trans       &trans  &trans  &trans  &trans  &trans
-&trans  &trans        &trans        &trans        &trans        &bootloader            &trans  &trans  &trans  &bootloader  &trans  &trans  &trans  &trans  &trans
-&trans  &trans        &trans        &trans        &trans        &sys_reset   &trans            &trans          &sys_reset   &trans  &trans  &trans  &trans  &trans
-                                    &trans        &trans        &trans                                         &trans       &trans  &trans
+&trans  &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_CLR                     &trans          &trans       &trans  &trans  &trans  &trans  &trans
+&trans  &trans           &trans           &rgb_ug RGB_SPI  &rgb_ug RGB_SPD  &bootloader            &trans  &trans  &trans  &bootloader  &trans  &trans  &trans  &trans  &trans
+&trans  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &sys_reset   &trans            &trans          &sys_reset   &trans  &trans  &trans  &trans  &trans
+                                          &trans           &trans           &trans                                         &trans       &trans  &trans
             >;
         };
     };
